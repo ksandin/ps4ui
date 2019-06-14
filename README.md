@@ -2,8 +2,6 @@
 
 The PS4 UI recreated using web technology.
 
-Short 5 day project with limited scope of building the Equipment screen.
-
 ### Getting started
 
 - Run `npm install`
