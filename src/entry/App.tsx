@@ -2,6 +2,8 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { AppState } from '../state/AppState';
 import { useObserver } from 'mobx-react-lite';
+import { Themed } from '../components/Themed';
+import { ThemeProvider } from 'styled-components';
 
 export type AppProps = {
   state: AppState;
@@ -13,8 +15,10 @@ export type AppProps = {
  */
 export const App = hot(({ state }: AppProps) =>
   useObserver(() => (
-    <AppState.Context.Provider value={state}>
-      Hello world
-    </AppState.Context.Provider>
+    <ThemeProvider theme={state.theme}>
+      <AppState.Context.Provider value={state}>
+        <Themed>Hello World</Themed>
+      </AppState.Context.Provider>
+    </ThemeProvider>
   ))
 );

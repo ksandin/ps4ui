@@ -4,8 +4,16 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "strict": true,
+    "module": "commonjs",
+    "lib": ["esnext", "dom"],
     "esModuleInterop": true,
-    "jsx": "react"
+    "skipLibCheck": true,
+    "jsx": "react",
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ]
   },
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,
@@ -14,7 +22,7 @@
     "babelOptions": {
       "babelrc": false,
       "presets": ["@babel/preset-react"],
-      "plugins": ["react-hot-loader/babel"]
+      "plugins": ["react-hot-loader/babel", "babel-plugin-styled-components"]
     }
   },
   "include": ["src"]
