@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react"
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "useCache": true,
+    "babelCore": "@babel/core",
+    "babelOptions": {
+      "babelrc": false,
+      "presets": ["@babel/preset-react"],
+      "plugins": ["react-hot-loader/babel"]
+    }
+  },
+  "include": ["src"]
+}
