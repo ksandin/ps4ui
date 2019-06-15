@@ -2,9 +2,11 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { AppState } from '../state/AppState';
 import { useObserver } from 'mobx-react-lite';
-import { Themed } from '../components/Themed';
+import { Screen } from '../components/Screen';
 import { ThemeProvider } from 'styled-components';
-import { Reset } from 'styled-reset';
+import { Viewport } from '../components/Viewport';
+import { Home } from '../components/Home';
+import { Reset } from '../components/Reset';
 
 export type AppProps = {
   state: AppState;
@@ -19,7 +21,11 @@ export const App = hot(({ state }: AppProps) =>
     <ThemeProvider theme={state.theme}>
       <AppState.Context.Provider value={state}>
         <Reset />
-        <Themed>Hello World</Themed>
+        <Viewport>
+          <Screen>
+            <Home />
+          </Screen>
+        </Viewport>
       </AppState.Context.Provider>
     </ThemeProvider>
   ))
