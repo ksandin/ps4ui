@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import { shevy } from './Typography';
 
 /**
  * Merges Eric Meyer's CSS Reset and the YOGA standard (https://facebook.github.io/yoga) into one.
@@ -7,6 +8,9 @@ import reset from 'styled-reset';
  */
 export const Reset = createGlobalStyle`
   ${reset}
+  body {
+    ${JSON.stringify(shevy.body)}
+  }
   body * {
     box-sizing: border-box;
     position: relative;
