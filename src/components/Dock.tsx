@@ -1,7 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-export const Dock = styled.div`
+export type DockProps = React.HTMLAttributes<HTMLDivElement>;
+
+export const Dock = styled.div<DockProps>`
   position: absolute;
   top: 0;
   right: 0;

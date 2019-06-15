@@ -4,7 +4,7 @@ import { AppState } from '../state/AppState';
 import { useObserver } from 'mobx-react-lite';
 import { Screen } from '../components/Screen';
 import { ThemeProvider } from 'styled-components';
-import { Viewport } from '../components/Viewport';
+import { Viewport } from '../components/Viewport/Viewport';
 import { Home } from '../components/Home';
 import { Reset } from '../components/Reset';
 
