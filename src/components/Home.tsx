@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { TypographyTest } from './TypographyTest';
 import { Dock } from './Dock';
 import { Clock } from './Clock';
+import { SystemMenu } from './SystemMenu/SystemMenu';
 
 export const Home = () => (
   <>
-    <TypographyTest />
+    <SystemMenu />
     <Dock variant="topRight">
       <Clock />
     </Dock>
