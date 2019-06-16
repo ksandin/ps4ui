@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Square, SquareContent, SquareProps } from '../Square';
 import styled from 'styled-components';
 import { StyledIconProps } from 'styled-icons/types';
+import { useSpatial } from '../../lib/spatial/useSpatial';
 
 export type SystemMenuItemProps = SquareProps & {
   icon: React.ComponentType<StyledIconProps>;
@@ -11,11 +12,19 @@ export type SystemMenuItemProps = SquareProps & {
 export const SystemMenuItem: React.FC<SystemMenuItemProps> = ({
   icon: Icon,
   ...props
-}) => (
-  <Bounds {...props}>
-    <Icon />
-  </Bounds>
-);
+}) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const isActive = useSpatial(ref);
+  return (
+    <Bounds
+      ref={ref}
+      {...props}
+      style={{ background: isActive ? 'green' : 'red' }}
+    >
+      <Icon />
+    </Bounds>
+  );
+};
 
 const Bounds = styled(Square)`
   & ${SquareContent} > svg {
