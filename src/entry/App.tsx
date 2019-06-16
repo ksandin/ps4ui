@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import { Viewport } from '../components/Viewport/Viewport';
 import { Home } from '../components/Home';
 import { Reset } from '../components/Reset';
+import { SpatialContext } from '../lib/spatial/SpatialContext';
 
 export type AppProps = {
   state: AppState;
@@ -19,14 +20,16 @@ export type AppProps = {
 export const App = hot(({ state }: AppProps) =>
   useObserver(() => (
     <ThemeProvider theme={state.theme}>
-      <AppState.Context.Provider value={state}>
-        <Reset />
-        <Viewport>
-          <Screen>
-            <Home />
-          </Screen>
-        </Viewport>
-      </AppState.Context.Provider>
+      <SpatialContext.Provider value={state.spatial}>
+        <AppState.Context.Provider value={state}>
+          <Reset />
+          <Viewport>
+            <Screen>
+              <Home />
+            </Screen>
+          </Viewport>
+        </AppState.Context.Provider>
+      </SpatialContext.Provider>
     </ThemeProvider>
   ))
 );
