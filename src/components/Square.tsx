@@ -4,10 +4,12 @@ import { Dock } from './Dock';
 
 export type SquareProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const Square: React.FC<SquareProps> = ({ children, ...props }) => (
-  <SquareBounds {...props}>
-    <SquareContent>{children}</SquareContent>
-  </SquareBounds>
+export const Square = React.forwardRef<HTMLDivElement, SquareProps>(
+  ({ children, ...props }, ref) => (
+    <SquareBounds ref={ref} {...props}>
+      <SquareContent>{children}</SquareContent>
+    </SquareBounds>
+  )
 );
 
 export const SquareBounds = styled.div`
