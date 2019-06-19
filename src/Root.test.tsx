@@ -1,13 +1,13 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './App';
-import { AppState } from './state/AppState';
+import { Root } from './Root';
+import { State } from './state/State';
 
 describe('App', () => {
   it('Can initialize without throwing errors', () => {
-    const state = new AppState();
+    const state = new State();
     const div = document.createElement('div');
-    ReactDOM.render(<App state={state} />, div);
+    ReactDOM.render(<Root state={state} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

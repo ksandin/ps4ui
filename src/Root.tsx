@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppState } from './state/AppState';
+import { State } from './state/State';
 import { useObserver } from 'mobx-react-lite';
 import { Screen } from './components/Screen';
 import { ThemeProvider } from 'styled-components/macro';
@@ -9,25 +9,25 @@ import { Reset } from './components/Reset';
 import { SpatialContext } from './lib/spatial/SpatialContext';
 
 export type AppProps = {
-  state: AppState;
+  state: State;
 };
 
 /**
  * The root component of the application.
  * Provides all application state and renders current state.
  */
-export const App = ({ state }: AppProps) =>
+export const Root = ({ state }: AppProps) =>
   useObserver(() => (
     <ThemeProvider theme={state.theme}>
       <SpatialContext.Provider value={state.spatial}>
-        <AppState.Context.Provider value={state}>
+        <State.Context.Provider value={state}>
           <Reset />
           <Viewport>
             <Screen>
               <Home />
             </Screen>
           </Viewport>
-        </AppState.Context.Provider>
+        </State.Context.Provider>
       </SpatialContext.Provider>
     </ThemeProvider>
   ));
