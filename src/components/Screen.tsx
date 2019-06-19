@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dock, DockProps } from './Dock';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const StyledScreen = styled(Dock)`
   padding: 3% 5%;

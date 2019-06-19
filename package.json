@@ -1,71 +1,56 @@
 {
   "name": "ps4ui",
-  "version": "1.0.0",
-  "description": "A typescript/react browser version of the PS4 UI",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ksandin/ps4ui.git"
-  },
-  "keywords": [
-    "PS4",
-    "typescript",
-    "react"
-  ],
-  "author": "Kasper Sandin",
-  "bugs": {
-    "url": "https://github.com/ksandin/ps4ui/issues"
-  },
-  "homepage": "https://github.com/ksandin/ps4ui#readme",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "mobx": "5.10.1",
     "mobx-react-lite": "1.4.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-hot-loader": "4.11.0",
     "styled-components": "4.3.1",
     "styled-reset": "2.0.15",
     "styled-icons": "8.1.0",
     "shevyjs": "1.1.0",
-    "responsive-gamepad": "1.2.1"
+    "responsive-gamepad": "1.2.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
   },
   "devDependencies": {
-    "@babel/core": "7.4.5",
-    "@babel/preset-react": "7.0.0",
-    "@types/html-webpack-plugin": "3.2.0",
-    "@types/jest": "24.0.14",
+    "@types/jest": "24.0.15",
+    "@types/node": "12.0.8",
     "@types/react": "16.8.20",
     "@types/react-dom": "16.8.4",
-    "@types/react-hot-loader": "4.1.0",
-    "@types/react-test-renderer": "16.8.2",
     "@types/styled-components": "4.1.15",
-    "awesome-typescript-loader": "5.2.1",
-    "babel-plugin-styled-components": "1.10.0",
-    "css-loader": "3.0.0",
-    "file-loader": "4.0.0",
-    "html-webpack-plugin": "3.2.0",
     "husky": "2.4.1",
-    "jest": "24.8.0",
     "lint-staged": "8.2.1",
     "prettier": "1.18.2",
-    "react-test-renderer": "16.8.6",
-    "style-loader": "0.23.1",
-    "ts-jest": "24.0.2",
-    "ts-node": "8.2.0",
+    "react-scripts": "3.0.1",
     "tslint": "5.17.0",
     "tslint-config-airbnb": "5.11.1",
     "tslint-config-prettier": "1.18.0",
     "tslint-eslint-rules": "5.4.0",
     "typescript": "3.5.2",
-    "typescript-styled-plugin": "0.14.0",
-    "webpack": "4.34.0",
-    "webpack-cli": "3.3.4",
-    "webpack-dev-server": "3.7.1"
+    "typescript-styled-plugin": "0.14.0"
   },
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "dev-server": "./node_modules/.bin/webpack-dev-server --hot",
-    "test": "./node_modules/.bin/jest",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "lint": "./node_modules/.bin/tslint --project tsconfig.json --config tslint.json"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "husky": {
     "hooks": {

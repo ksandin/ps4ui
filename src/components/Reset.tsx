@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components/macro';
 import reset from 'styled-reset';
 import { shevy } from './Typography';
 

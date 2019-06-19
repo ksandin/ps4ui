@@ -6,6 +6,7 @@ import { SystemMenu } from './SystemMenu/SystemMenu';
 export const Home = () => (
   <>
     <SystemMenu />
+    <SystemMenu />
     <Dock variant="topRight">
       <Clock />
     </Dock>

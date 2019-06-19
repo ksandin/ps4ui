@@ -5,21 +5,27 @@ import { Android } from 'styled-icons/material';
 import { Baidu } from 'styled-icons/boxicons-logos';
 import { SystemMenuItem } from './SystemMenuItem';
 import { Row } from '../Row';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export const SystemMenu = () => (
-  <StyledRow>
+  <SystemMenuRow>
     <SystemMenuItem icon={Airbnb} name="Airbnb" />
     <SystemMenuItem icon={Amazon} name="Amazon" />
     <SystemMenuItem icon={Android} name="Android" />
     <SystemMenuItem icon={Apple} name="Apple" />
     <SystemMenuItem icon={Angular} name="Angular" />
     <SystemMenuItem icon={Baidu} name="Baidu" />
-  </StyledRow>
+  </SystemMenuRow>
 );
 
-const StyledRow = styled(Row)`
+const SystemMenuRow = styled(Row)`
+  & + & {
+    margin-bottom: 10px;
+  }
   & > * {
     width: ${100 / 6}%;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
   }
 `;

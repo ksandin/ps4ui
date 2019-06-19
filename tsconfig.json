@@ -1,29 +1,20 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "moduleResolution": "node",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "experimentalDecorators": true,
-    "strict": true,
-    "module": "commonjs",
-    "lib": ["esnext", "dom"],
-    "esModuleInterop": true,
+    "allowJs": true,
     "skipLibCheck": true,
-    "jsx": "react",
-    "plugins": [
-      {
-        "name": "typescript-styled-plugin"
-      }
-    ]
-  },
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useCache": true,
-    "babelCore": "@babel/core",
-    "babelOptions": {
-      "babelrc": false,
-      "presets": ["@babel/preset-react"],
-      "plugins": ["react-hot-loader/babel", "babel-plugin-styled-components"]
-    }
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve"
   },
   "include": ["src"]
 }

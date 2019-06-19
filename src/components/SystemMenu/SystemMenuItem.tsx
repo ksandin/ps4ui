@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Square, SquareContent, SquareProps } from '../Square';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { StyledIconProps } from 'styled-icons/types';
 import { useSpatial } from '../../lib/spatial/useSpatial';
 

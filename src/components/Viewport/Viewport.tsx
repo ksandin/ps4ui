@@ -9,10 +9,10 @@ export const Viewport: React.FC<ViewportProps> = ({
   children,
   ...dockProps
 }) => {
+  const {
+    ui: { windowSize }
+  } = React.useContext(AppState.Context);
   return useObserver(() => {
-    const {
-      ui: { windowSize }
-    } = React.useContext(AppState.Context);
     return (
       <div {...dockProps} style={createViewportStyle(windowSize)}>
         {children}
