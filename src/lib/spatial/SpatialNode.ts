@@ -1,1 +1,1 @@
-export type SpatialNode = Element;
+export type SpatialNode = HTMLElement;
