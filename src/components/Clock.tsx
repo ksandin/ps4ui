@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Typography } from './Typography';
-import { timeEffect } from '../effects/timeEffect';
+import { useTimer } from '../hooks/useTimer';
 
 export const Clock = () => {
-  const [time, setTime] = React.useState(new Date());
-  React.useEffect(() => timeEffect(setTime), []);
+  const time = useTimer();
   return (
     <Typography variant="h3">
-      {time.getHours()}:{time.getMinutes()}
+      {time.getHours()}:{time.getMinutes()}:{time.getSeconds()}
     </Typography>
   );
 };
