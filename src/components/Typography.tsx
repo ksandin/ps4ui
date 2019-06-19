@@ -4,6 +4,10 @@ import { fonts } from '../assets/fonts';
 
 const Shevy = require('shevyjs').default;
 
+const shared = `
+    font-family: ${fonts.Default};
+`;
+
 export type TypographyProps = React.HTMLAttributes<{}> & {
   variant?: TypographyVariant;
 };
@@ -17,44 +21,34 @@ export const shevy = new Shevy();
 
 export const components = {
   h1: styled.h1`
-    font-family: ${fonts.Default};
-    ${shevy.h1}
+    ${shared} ${shevy.h1}
   `,
   h2: styled.h2`
-    font-family: ${fonts.Default};
-    ${shevy.h2}
+    ${shared} ${shevy.h2}
   `,
   h3: styled.h3`
-    font-family: ${fonts.Default};
-    ${shevy.h3}
+    ${shared} ${shevy.h3}
   `,
   h4: styled.h4`
-    font-family: ${fonts.Default};
-    ${shevy.h4}
+    ${shared} ${shevy.h4}
   `,
   h5: styled.h5`
-    font-family: ${fonts.Default};
-    ${shevy.h5}
+    ${shared} ${shevy.h5}
   `,
   h6: styled.h6`
-    font-family: ${fonts.Default};
-    ${shevy.h6}
+    ${shared} ${shevy.h6}
   `,
   p: styled.p`
-    font-family: ${fonts.Default};
-    ${shevy.content}
+    ${shared} ${shevy.content}
   `,
   ol: styled.ol`
-    font-family: ${fonts.Default};
-    ${shevy.content}
+    ${shared} ${shevy.content}
   `,
   ul: styled.ul`
-    font-family: ${fonts.Default};
-    ${shevy.content}
+    ${shared} ${shevy.content}
   `,
   pre: styled.pre`
-    font-family: ${fonts.Default};
-    ${shevy.content}
+    ${shared} ${shevy.content}
   `
 };
 
