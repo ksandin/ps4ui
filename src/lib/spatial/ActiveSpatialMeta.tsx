@@ -11,8 +11,8 @@ export function ActiveSpatialMeta<T>({
   type,
   children
 }: ActiveSpatialMetaProps<T>) {
+  const spatial = React.useContext(SpatialContext);
   return useObserver(() => {
-    const spatial = React.useContext(SpatialContext);
     const meta = spatial.getActiveMeta();
     return children(meta instanceof type ? meta : undefined);
   });
