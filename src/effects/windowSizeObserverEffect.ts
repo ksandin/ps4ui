@@ -1,4 +1,4 @@
-export const windowSizeObserverBehavior = (emitSize: WindowSizeEmitter) => {
+export const windowSizeObserverEffect = (emitSize: WindowSizeEmitter) => {
   const emit = () =>
     emitSize({
       width: window.innerWidth,

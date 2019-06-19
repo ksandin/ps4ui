@@ -1,4 +1,4 @@
-export const timeBehavior = (
+export const timeEffect = (
   emitTime: (time: Date) => any,
   interval: number = 1000
 ) => {
