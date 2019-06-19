@@ -20,10 +20,10 @@ export const SystemMenu = () => (
 
 const SystemMenuRow = styled(Row)`
   & + & {
-    margin-bottom: 10px;
+    margin-top: 10px;
   }
   & > * {
-    width: ${100 / 6}%;
+    flex: 1;
     &:not(:last-child) {
       margin-right: 10px;
     }
