@@ -19,13 +19,11 @@ export const SystemMenu = () => (
 );
 
 const SystemMenuRow = styled(Row)`
-  & + & {
-    margin-top: 10px;
-  }
+  margin-bottom: ${props => props.theme.unit};
   & > * {
     flex: 1;
     &:not(:last-child) {
-      margin-right: 10px;
+      margin-right: ${props => props.theme.unit};
     }
   }
 `;

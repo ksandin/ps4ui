@@ -5,13 +5,14 @@
   "dependencies": {
     "mobx": "5.10.1",
     "mobx-react-lite": "1.4.0",
-    "styled-components": "4.3.1",
-    "styled-reset": "2.0.15",
-    "styled-icons": "8.1.0",
-    "shevyjs": "1.1.0",
-    "responsive-gamepad": "1.2.1",
+    "polished": "^3.4.1",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "responsive-gamepad": "1.2.1",
+    "shevyjs": "1.1.0",
+    "styled-components": "4.3.1",
+    "styled-icons": "8.1.0",
+    "styled-reset": "2.0.15"
   },
   "devDependencies": {
     "@types/jest": "24.0.15",
