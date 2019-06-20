@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { State } from '../../state/State';
+import { StateContext } from '../../state/State';
 import { useObserver } from 'mobx-react-lite';
 import { createViewportStyle } from './createViewportStyle';
 
@@ -9,7 +9,7 @@ export const Viewport: React.FC<ViewportProps> = ({
   children,
   ...dockProps
 }) => {
-  const { ui } = React.useContext(State.Context);
+  const { ui } = React.useContext(StateContext);
   return useObserver(() => (
     <div {...dockProps} style={createViewportStyle(ui.windowSize)}>
       {children}

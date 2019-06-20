@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { State } from './state/State';
+import { State, StateContext } from './state/State';
 import { useObserver } from 'mobx-react-lite';
 import { Screen } from './components/Screen';
 import { ThemeProvider } from 'styled-components/macro';
@@ -20,14 +20,14 @@ export const Root = ({ state }: AppProps) =>
   useObserver(() => (
     <ThemeProvider theme={state.theme}>
       <SpatialContext.Provider value={state.spatial}>
-        <State.Context.Provider value={state}>
+        <StateContext.Provider value={state}>
           <Reset />
           <Viewport>
             <Screen>
               <Home />
             </Screen>
           </Viewport>
-        </State.Context.Provider>
+        </StateContext.Provider>
       </SpatialContext.Provider>
     </ThemeProvider>
   ));
