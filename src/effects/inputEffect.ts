@@ -1,10 +1,8 @@
-import { InputId, InputState, ResponsiveGamepad } from 'responsive-gamepad';
+import { InputState, ResponsiveGamepad } from 'responsive-gamepad';
+import { inputChangeEffect } from './inputChangeEffect';
 
 export function inputEffect(handleInput: (state: InputState) => any) {
-  const stopListeningToChanges = ResponsiveGamepad.onInputsChange(
-    Object.keys(ResponsiveGamepad.RESPONSIVE_GAMEPAD_INPUTS) as InputId[],
-    handleInput
-  );
+  const stopListeningToChanges = inputChangeEffect(handleInput);
   ResponsiveGamepad.enable();
   return () => {
     stopListeningToChanges();
