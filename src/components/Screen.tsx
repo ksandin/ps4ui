@@ -12,12 +12,7 @@ export const Screen: React.FC<ScreenProps> = ({ children, ...props }) => {
   const { index: backgroundIndex, cycle: cycleBackground } = useIndexCycle(
     backgrounds.length
   );
-  const { item: opacity, cycle: cycleOpacity } = useArrayCycle([
-    1,
-    0.5,
-    0.25,
-    0
-  ]);
+  const { item: opacity, cycle: cycleOpacity } = useArrayCycle(opacities);
   return (
     <Padding {...props}>
       <Background index={backgroundIndex} />
@@ -25,17 +20,19 @@ export const Screen: React.FC<ScreenProps> = ({ children, ...props }) => {
         {children}
       </Dock>
       <Dock variant="bottomRight">
-        <button onClick={cycleBackground}>
-          <Typography variant="h1">Cycle background</Typography>
-        </button>
-        <button onClick={cycleOpacity}>
-          <Typography variant="h1">Cycle opacity</Typography>
-        </button>
+        <Typography variant="h1" onClick={cycleBackground}>
+          Cycle background
+        </Typography>
+        <Typography variant="h1" onClick={cycleOpacity}>
+          Cycle opacity
+        </Typography>
       </Dock>
     </Padding>
   );
 };
 
+const opacities = [0.25, 0.5, 1, 0];
+
 const Padding = styled(Dock)`
-  padding: 3% 5%;
+  padding: 4.2% 5%;
 `;
