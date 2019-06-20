@@ -26,6 +26,7 @@ export function createViewportStyle(windowSize: Size) {
   return {
     ...viewportSize,
     transformOrigin: '0 0',
-    transform: `translate(${xOffset}px, ${yOffset}px) scale(${scale})`
+    transform: `translate(${xOffset}px, ${yOffset}px) scale(${scale})`,
+    overflow: 'hidden'
   };
 }
