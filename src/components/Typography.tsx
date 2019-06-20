@@ -1,11 +1,12 @@
 import * as React from 'react';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { fonts } from '../assets/fonts';
 
 const Shevy = require('shevyjs').default;
 
-const shared = `
-    font-family: ${fonts.Default};
+const shared = css`
+  color: ${props => props.theme.colors.main};
+  font-family: ${fonts.Default};
 `;
 
 export type TypographyProps = React.HTMLAttributes<{}> & {
