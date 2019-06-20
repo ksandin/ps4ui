@@ -5,6 +5,8 @@ import { SystemMenu } from './SystemMenu/SystemMenu';
 import { AppMenu } from './AppMenu/AppMenu';
 import { StateContext } from '../state/State';
 import { useSpatialIndex } from '../lib/spatial/useSpatialIndex';
+import { SystemMenuContent } from './SystemMenu/SystemMenuContent';
+import { AppMenuContent } from './AppMenu/AppMenuContent';
 
 export const Home = () => {
   const { apps, systems } = React.useContext(StateContext);
@@ -18,10 +20,10 @@ export const Home = () => {
 
   return (
     <>
-      {system ? system.name : undefined}
+      <SystemMenuContent system={system} />
       <SystemMenu ref={systemMenuRef} items={systems} />
       <AppMenu ref={appMenuRef} items={apps} />
-      {app ? app.name : undefined}
+      <AppMenuContent app={app} />
       <Dock variant="topRight">
         <Clock />
       </Dock>

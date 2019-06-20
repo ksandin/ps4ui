@@ -2,6 +2,7 @@ import * as React from 'react';
 import { SystemMenuItem, SystemMenuItemProps } from './SystemMenuItem';
 import { Row } from '../Row';
 import styled from 'styled-components/macro';
+import { math } from 'polished';
 
 export type SystemMenuProps = React.HTMLAttributes<HTMLDivElement> & {
   items?: SystemMenuItemProps[];
@@ -19,10 +20,9 @@ export const SystemMenu = React.forwardRef<HTMLDivElement, SystemMenuProps>(
 
 const SystemMenuRow = styled(Row)`
   margin-bottom: ${props => props.theme.unit};
+  justify-content: space-between;
+  padding: 0 ${props => math(`${props.theme.unit} * 9`)};
   & > * {
-    flex: 1;
-    &:not(:last-child) {
-      margin-right: ${props => props.theme.unit};
-    }
+    width: ${props => math(`${props.theme.unit} * 8`)};
   }
 `;
