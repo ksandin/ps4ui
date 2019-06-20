@@ -3,7 +3,7 @@ import { math } from 'polished';
 import { Row } from '../Row';
 import styled from 'styled-components/macro';
 import { createTransformer } from './createTransformer';
-import { useRowOffset } from './useRowOffset';
+import { useSpatialOffset } from '../../hooks/useSpatialOffset';
 import { useRefNormalizer } from '../../hooks/useRefNormalizer';
 import { AppMenuItem } from './AppMenuItem';
 import { Content } from '../../state/Content';
@@ -13,8 +13,9 @@ export type AppMenuProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 export const AppMenu = React.forwardRef<HTMLDivElement, AppMenuProps>(
-  ({ items = [], ...props }, ref) =>
-    useRowOffset(useRefNormalizer(ref), offset => (
+  ({ items = [], ...props }, ref) => {
+    const offset = useSpatialOffset(useRefNormalizer(ref));
+    return (
       <SlidingAppMenuRow
         ref={ref}
         transform={`translate(${offset}px)`}
@@ -24,7 +25,8 @@ export const AppMenu = React.forwardRef<HTMLDivElement, AppMenuProps>(
           <AppMenuItem key={index} {...itemProps} />
         ))}
       </SlidingAppMenuRow>
-    ))
+    );
+  }
 );
 
 const AppMenuRow = styled(Row)`
