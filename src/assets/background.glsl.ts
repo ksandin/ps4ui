@@ -1,6 +1,6 @@
 export const background = `
-const vec3 top = vec3(0.318, 0.831, 1.0);
-const vec3 bottom = vec3(0.094, 0.141, 0.424);
+const vec3 top = vec3(0.01, 0.4, 0.7);
+const vec3 bottom = vec3(0.06, 0.16, 0.51);
 const float widthFactor = 1.5;
 
 vec3 calcSine(vec2 uv, float speed, 
