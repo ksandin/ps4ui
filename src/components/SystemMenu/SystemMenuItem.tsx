@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { Square, SquareContent, SquareProps } from '../Square';
 import styled from 'styled-components/macro';
-import { StyledIconProps } from 'styled-icons/types';
 import { useSpatial } from '../../lib/spatial/useSpatial';
+import { Content } from '../../state/Content';
 
-export type SystemMenuItemProps = SquareProps & {
-  icon: React.ComponentType<StyledIconProps>;
-  name: string;
-};
+export type SystemMenuItemProps = SquareProps & Content;
 
 export const SystemMenuItem: React.FC<SystemMenuItemProps> = ({
   icon: Icon,
