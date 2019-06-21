@@ -12,7 +12,8 @@
     "shevyjs": "1.1.0",
     "styled-components": "4.3.1",
     "styled-icons": "8.1.0",
-    "styled-reset": "2.0.15"
+    "styled-reset": "2.0.15",
+    "shadertoy-react": "1.1.1"
   },
   "devDependencies": {
     "@types/jest": "24.0.15",

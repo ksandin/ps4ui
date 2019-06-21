@@ -21,6 +21,11 @@ export const dockStyles = {
     position: absolute;
     top: 0;
     right: 0;
+  `,
+  bottomRight: `
+    position: absolute;
+    bottom: 0;
+    right: 0;
   `
 };
 
