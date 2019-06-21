@@ -31,7 +31,7 @@ export const Screen: React.FC<ScreenProps> = ({ children, ...props }) => {
   );
 };
 
-const opacities = [0.25, 0.5, 1, 0];
+const opacities = [0.5, 0.25, 1, 0];
 
 const Padding = styled(Dock)`
   padding: 4.2% 5%;

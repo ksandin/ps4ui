@@ -2,6 +2,8 @@ import * as React from 'react';
 import { StyledIconProps } from 'styled-icons/types';
 
 export type Content = {
-  icon: React.ComponentType<StyledIconProps>;
+  icon: React.ComponentType<
+    React.HTMLAttributes<HTMLElement> | StyledIconProps
+  >;
   name: string;
 };
