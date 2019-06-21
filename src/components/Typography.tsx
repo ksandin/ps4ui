@@ -20,36 +20,45 @@ export const Typography: React.FC<TypographyProps> = ({
 
 export const shevy = new Shevy();
 
+const pick = (tag: string) => {
+  const obj = { ...shevy[tag] };
+  delete obj.margin;
+  delete obj.marginBottom;
+  return css`
+    ${shared} ${obj}
+  `;
+};
+
 export const components = {
   h1: styled.h1`
-    ${shared} ${shevy.h1}
+    ${pick('h1')}
   `,
   h2: styled.h2`
-    ${shared} ${shevy.h2}
+    ${pick('h2')}
   `,
   h3: styled.h3`
-    ${shared} ${shevy.h3}
+    ${pick('h3')}
   `,
   h4: styled.h4`
-    ${shared} ${shevy.h4}
+    ${pick('h4')}
   `,
   h5: styled.h5`
-    ${shared} ${shevy.h5}
+    ${pick('h5')}
   `,
   h6: styled.h6`
-    ${shared} ${shevy.h6}
+    ${pick('h6')}
   `,
   p: styled.p`
-    ${shared} ${shevy.content}
+    ${pick('content')}
   `,
   ol: styled.ol`
-    ${shared} ${shevy.content}
+    ${pick('content')}
   `,
   ul: styled.ul`
-    ${shared} ${shevy.content}
+    ${pick('content')}
   `,
   pre: styled.pre`
-    ${shared} ${shevy.content}
+    ${pick('content')}
   `
 };
 

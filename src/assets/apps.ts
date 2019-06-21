@@ -6,15 +6,15 @@ const image = () =>
   styled.img.attrs({ src: `https://picsum.photos/300/300?_=${bust()}` })``;
 
 export const apps = [
-  { icon: image(), name: 'BowlingBall' },
-  { icon: image(), name: 'BreadSlice' },
-  { icon: image(), name: 'Broom' },
-  { icon: image(), name: 'CandyCane' },
-  { icon: image(), name: 'Cat' },
-  { icon: image(), name: 'CheckCircle' },
-  { icon: image(), name: 'Cloud' },
-  { icon: image(), name: 'Coins' },
-  { icon: image(), name: 'Comments' },
-  { icon: image(), name: 'CompactDisc' },
-  { icon: image(), name: 'Settings' }
+  { icon: image(), name: 'BowlingBall', action: 'Bowl' },
+  { icon: image(), name: 'BreadSlice', action: 'Yum' },
+  { icon: image(), name: 'Broom', action: 'Clean' },
+  { icon: image(), name: 'CandyCane', action: 'Tasty' },
+  { icon: image(), name: 'Cat', action: 'Meow' },
+  { icon: image(), name: 'CheckCircle', action: 'Spin' },
+  { icon: image(), name: 'Cloud', action: 'Floof' },
+  { icon: image(), name: 'Coins', action: 'Cashing' },
+  { icon: image(), name: 'Comments', action: 'Talk' },
+  { icon: image(), name: 'CompactDisc', action: 'Spin' },
+  { icon: image(), name: 'Settings', action: 'Open' }
 ];

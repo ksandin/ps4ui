@@ -11,7 +11,10 @@ export const createDefaultTheme = (): DefaultTheme => {
     colors: {
       white,
       main: white,
-      secondary: 'rgb(0, 30, 120)'
+      secondary: 'rgb(0, 30, 120)',
+      background: 'rgb(30, 80, 150)',
+      bright: 'rgba(14, 141, 211, 0.5)',
+      dark: 'rgb(0, 30, 120)'
     }
   };
 };

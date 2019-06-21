@@ -6,4 +6,5 @@ export type Content = {
     React.HTMLAttributes<HTMLElement> | StyledIconProps
   >;
   name: string;
+  action?: string;
 };

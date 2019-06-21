@@ -12,11 +12,11 @@ const imageStyle = (url: string) => ({
 });
 
 export const backgrounds = [
-  <Dock style={imageStyle(require('../assets/background-apps.png'))} />,
-  <Dock style={imageStyle(require('../assets/background-systems.jpg'))} />,
   <Dock>
     <Shader fs={background} />
-  </Dock>
+  </Dock>,
+  <Dock style={imageStyle(require('../assets/background-apps.png'))} />,
+  <Dock style={imageStyle(require('../assets/background-systems.jpg'))} />
 ];
 
 export const Background: React.FC<BackgroundsProps> = ({ index = 0 }) =>

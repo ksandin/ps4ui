@@ -9,13 +9,14 @@ export type BorderProps = HTMLAttributes<HTMLDivElement> & {
 
 export const Border = styled.div<BorderProps>`
   &:after {
+    pointer-events: none;
     ${activationTransition('border-width', 'top', 'right', 'bottom', 'left')};
     ${({ isActive, theme }) => {
       const borderWidth = isActive ? math(`${theme.unit} * 0.75`) : 0;
       const offset = math(`-2px - ${isActive ? borderWidth : 0}`);
       return {
         borderWidth,
-        content: "''",
+        content: '\'\'',
         display: 'block',
         position: 'absolute',
         top: offset,

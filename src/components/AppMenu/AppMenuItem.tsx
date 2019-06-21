@@ -7,6 +7,7 @@ import { math } from 'polished';
 import { activationTransition } from '../../css/transitions';
 import { Border } from '../Border';
 import { Dock } from '../Dock';
+import { Typography } from '../Typography';
 
 export type AppMenuItemProps = SquareProps & Content & { activate?: boolean };
 
@@ -15,6 +16,7 @@ const activeClass = 'active';
 export const AppMenuItem: React.FC<AppMenuItemProps> = ({
   icon: Icon,
   name,
+  action,
   activate,
   ...props
 }) => {
@@ -29,7 +31,9 @@ export const AppMenuItem: React.FC<AppMenuItemProps> = ({
       <Body isActive={isActive}>
         <Crop>
           <Image as={Icon} />
-          <Bottom>Test: {name}</Bottom>
+          <Bottom>
+            <Typography variant="h2">{action}</Typography>
+          </Bottom>
         </Crop>
       </Body>
     </Container>
@@ -50,12 +54,15 @@ export const itemGutter = (theme: DefaultTheme, isActive?: boolean) =>
   math(`${theme.unit} * ${isActive ? 3 : 0.5}`);
 
 const Bottom = styled.div`
-  background: tomato;
+  background: ${props => props.theme.colors.bright};
   height: ${props => math(`${props.theme.unit} * ${bottomHeight}`)};
+  justify-content: center;
+  align-items: center;
 `;
 
 const Image = styled(Square)`
   width: 100%;
+  background: ${props => props.theme.colors.background};
 `;
 
 const Container = styled.div(
@@ -78,7 +85,6 @@ const Body = styled(Border)<{ isActive: boolean }>(
   ({ theme, isActive }) => css`
     width: ${itemWidth(theme, isActive)};
     height: ${itemHeight(theme, isActive)};
-    background: rgb(30, 80, 150);
   `
 );
 
