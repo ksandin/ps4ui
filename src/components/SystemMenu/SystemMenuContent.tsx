@@ -18,12 +18,12 @@ export const SystemMenuContent: React.FC<SystemMenuContentProps> = ({
 );
 
 const height = (theme: DefaultTheme) => math(`${theme.unit} * 82`);
-const Style = styled.div<{ isActive: boolean }>`
-  ${activationTransition('margin-top', 'opacity')};
-  ${({ isActive, theme }) => css`
+const Style = styled.div<{ isActive: boolean }>(
+  activationTransition('margin-top', 'opacity'),
+  ({ isActive, theme }) => css`
     margin-top: ${!isActive ? math(`-${height(theme)}`) : 0};
     opacity: ${isActive ? 1 : 0};
     height: ${height(theme)};
     padding: ${math(`${theme.unit} * 4`)} ${math(`${theme.unit} * 12`)};
-  `}
-`;
+  `
+);
