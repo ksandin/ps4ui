@@ -5,7 +5,7 @@ export const activationTransition = (...properties: string[]) => ({
   isActive,
   theme
 }: {
-  isActive: boolean;
+  isActive?: boolean;
   theme: DefaultTheme;
 }) =>
   transitions(

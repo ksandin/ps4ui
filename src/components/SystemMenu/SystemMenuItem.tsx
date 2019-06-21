@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components/macro';
+import styled, { DefaultTheme } from 'styled-components/macro';
 import { useSpatial } from '../../lib/spatial/useSpatial';
 import { Content } from '../../state/Content';
 import { TypographyProps } from '../Typography';
@@ -34,15 +34,16 @@ const Text = styled(GlowingTypography).attrs<TypographyProps>({
   margin-bottom: 0;
 `;
 
+const size = ({ unit }: DefaultTheme) => math(`${unit} * 12`);
 const Container = styled.div<{ isActive: boolean }>`
   & {
     ${activationTransition('transform')};
-    transform: scale(${props => (props.isActive ? 1 : 0.5)});
+    transform: translate(0, -32%) scale(${props => (props.isActive ? 1 : 0.5)});
     align-items: center;
   }
   svg {
-    width: ${props => math(`${props.theme.unit} * 12`)};
-    height: ${props => math(`${props.theme.unit} * 12`)};
+    width: ${props => size(props.theme)};
+    height: ${props => size(props.theme)};
     color: ${props => props.theme.colors.white};
   }
 `;

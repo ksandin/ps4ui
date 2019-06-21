@@ -10,13 +10,14 @@ import { AppMenuContent } from './AppMenu/AppMenuContent';
 
 export const Home = () => {
   const { apps, systems } = React.useContext(StateContext);
-  const appMenuRef = React.useRef(null);
-  const appIndex = useSpatialIndex(appMenuRef);
-  const app = apps[appIndex];
-
   const systemMenuRef = React.useRef(null);
   const systemIndex = useSpatialIndex(systemMenuRef);
   const system = systems[systemIndex];
+
+  const appMenuRef = React.useRef(null);
+  const appIndex = useSpatialIndex(appMenuRef);
+
+  const app = apps[appIndex];
 
   return (
     <>
