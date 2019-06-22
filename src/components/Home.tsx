@@ -7,7 +7,6 @@ import { StateContext } from '../state/State';
 import { useSpatialIndex } from '../lib/spatial/useSpatialIndex';
 import { SystemMenuContent } from './SystemMenu/SystemMenuContent';
 import { AppMenuContent } from './AppMenu/AppMenuContent';
-import { AppName } from './AppMenu/AppName';
 
 export const Home = () => {
   const { apps, systems } = React.useContext(StateContext);
@@ -17,6 +16,7 @@ export const Home = () => {
 
   const appMenuRef = React.useRef(null);
   const appIndex = useSpatialIndex(appMenuRef);
+
   const app = apps[appIndex];
 
   return (
@@ -24,7 +24,6 @@ export const Home = () => {
       <SystemMenuContent system={system} />
       <SystemMenu ref={systemMenuRef} items={systems} />
       <AppMenu ref={appMenuRef} items={apps} />
-      <AppName>{app && app.name}</AppName>
       <AppMenuContent>
         {app && app.component && React.createElement(app.component)}
       </AppMenuContent>
