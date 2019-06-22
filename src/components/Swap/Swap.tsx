@@ -8,7 +8,7 @@ import { SwapStyleFactory } from './SwapStyleFactory';
 
 export type SwapKey = string | number | undefined;
 
-export type SwapProps = TransitionGroupProps & {
+export type SwapProps = Omit<TransitionGroupProps, 'component'> & {
   swapKey?: SwapKey;
   styleFactory?: SwapStyleFactory;
 };
