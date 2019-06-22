@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { math } from 'polished';
 import { Row } from '../Row';
-import styled from 'styled-components/macro';
 import { createTransformer } from './createTransformer';
-import { useSpatialOffset } from '../../hooks/useSpatialOffset';
 import { useRefNormalizer } from '../../hooks/useRefNormalizer';
-import { AppMenuItem } from './AppMenuItem';
+import { AppMenuItem, itemGutter, itemHeight, itemWidth } from './AppMenuItem';
 import { Content } from '../../state/Content';
+import styled, { DefaultTheme, ThemeContext } from 'styled-components';
+import { activationTransition } from '../../css/transitions';
+import { math } from 'polished';
+import { useSpatialIndex } from '../../lib/spatial/useSpatialIndex';
+import { getOffsetForActiveItem } from './getOffsetForActiveItem';
+import { AppName } from './AppName';
 
 export type AppMenuProps = React.HTMLAttributes<HTMLDivElement> & {
   items?: Content[];
@@ -14,28 +17,46 @@ export type AppMenuProps = React.HTMLAttributes<HTMLDivElement> & {
 
 export const AppMenu = React.forwardRef<HTMLDivElement, AppMenuProps>(
   ({ items = [], ...props }, ref) => {
-    const offset = useSpatialOffset(useRefNormalizer(ref));
+    const index = useSpatialIndex(useRefNormalizer(ref));
+    const theme = React.useContext(ThemeContext);
+    const offset = getOffsetForActiveItem(theme, index);
+    const activeItem = items[index];
     return (
-      <SlidingAppMenuRow
-        ref={ref}
-        transform={`translate(${offset}px)`}
-        {...props}
-      >
-        {items.map((itemProps, index) => (
-          <AppMenuItem key={index} {...itemProps} />
-        ))}
-      </SlidingAppMenuRow>
+      <Container {...props}>
+        <Slider ref={ref} transform={`translate(${offset})`}>
+          {items.map((itemProps, index) => (
+            <AppMenuItem key={index} activate={index === 0} {...itemProps} />
+          ))}
+        </Slider>
+        <Footer>{activeItem && activeItem.name}</Footer>
+      </Container>
     );
   }
 );
 
-const AppMenuRow = styled(Row)`
-  & > * {
-    width: ${props => math(`${props.theme.unit} * 50`)};
-    &:not(:last-child) {
-      margin-right: ${props => props.theme.unit};
-    }
-  }
+const leftMargin = ({ theme }: { theme: DefaultTheme }) =>
+  math(`${itemWidth(theme)} * 1`);
+
+const rowHeight = ({ theme }: { theme: DefaultTheme }) =>
+  itemHeight(theme, false);
+
+const footerOffsetY = ({ theme }: { theme: DefaultTheme }) =>
+  math(`-(${itemHeight(theme, true)} - ${rowHeight({ theme })})`);
+
+const footerOffsetX = ({ theme }: { theme: DefaultTheme }) =>
+  math(`${itemWidth(theme, true)} + ${itemGutter(theme, true)}`);
+
+const Container = styled.div`
+  margin-left: ${leftMargin};
+  height: ${rowHeight};
 `;
 
-const SlidingAppMenuRow = createTransformer(AppMenuRow);
+const Slider = styled(createTransformer(Row))(
+  activationTransition('transform')
+);
+
+const Footer = styled(AppName)`
+  position: absolute;
+  bottom: ${footerOffsetY};
+  left: ${footerOffsetX};
+`;

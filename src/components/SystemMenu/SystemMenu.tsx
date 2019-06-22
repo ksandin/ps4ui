@@ -24,15 +24,14 @@ export const SystemMenu = React.forwardRef<HTMLDivElement, SystemMenuProps>(
   }
 );
 
-const SystemMenuRow = styled(Row)<{ isActive: boolean }>`
-  ${activationTransition('padding-right')};
-  ${({ isActive, theme }) => css`
+const SystemMenuRow = styled(Row)<{ isActive: boolean }>(
+  activationTransition('padding-right'),
+  ({ isActive, theme }) => css`
     justify-content: space-between;
-    margin-bottom: ${theme.unit};
     padding-left: ${math(`${theme.unit} * ${isActive ? 9 : 0}`)};
     padding-right: ${math(`${theme.unit} * ${isActive ? 9 : 21}`)};
     & > * {
       width: ${math(`${theme.unit} * 8`)};
     }
-  `}
-`;
+  `
+);
