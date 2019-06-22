@@ -28,7 +28,7 @@ export const AppMenu = React.forwardRef<HTMLDivElement, AppMenuProps>(
             <AppMenuItem key={index} activate={index === 0} {...itemProps} />
           ))}
         </Slider>
-        <Footer>{activeItem && activeItem.name}</Footer>
+        <PositionedAppName>{activeItem && activeItem.name}</PositionedAppName>
       </Container>
     );
   }
@@ -55,7 +55,7 @@ const Slider = styled(createTransformer(Row))(
   activationTransition('transform')
 );
 
-const Footer = styled(AppName)`
+const PositionedAppName = styled(AppName)`
   position: absolute;
   bottom: ${footerOffsetY};
   left: ${footerOffsetX};
