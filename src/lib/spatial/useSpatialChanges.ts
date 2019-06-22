@@ -1,5 +1,5 @@
 import { SpatialNode } from './SpatialNode';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useLayoutEffect, useState } from 'react';
 import { SpatialContext } from './SpatialContext';
 
 export const useSpatialChanges = <S>(
@@ -12,7 +12,7 @@ export const useSpatialChanges = <S>(
     () => setState(getStateForNode(spatial.getActive())),
     [spatial, setState, getStateForNode]
   );
-  useEffect(() => {
+  useLayoutEffect(() => {
     refreshState();
     return spatial.subscribeToChanges(refreshState);
   }, [refreshState, spatial]);
