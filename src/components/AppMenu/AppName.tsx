@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Swap, SwapProps } from '../Swap/Swap';
 import { Typography } from '../Typography';
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { activationTransition } from '../../css/transitions';
+import { math } from 'polished';
+import { itemGutter, itemHeight, itemWidth } from './AppMenuItem';
+import { leftMargin, rowHeight } from './AppMenu';
 
 export type AppNameProps = Omit<SwapProps, 'children'> & {
   children: string;
@@ -14,10 +17,25 @@ export const AppName: React.FC<AppNameProps> = ({ children, ...props }) => (
   </Bounds>
 );
 
+const height = '60px';
+
+const yOffset = ({ theme }: { theme: DefaultTheme }) =>
+  math(`(${itemHeight(theme, true)} - ${rowHeight({ theme })}) - ${height}`);
+
+const xOffset = ({ theme }: { theme: DefaultTheme }) =>
+  math(
+    `${leftMargin({ theme })} + ${itemWidth(theme, true)} + ${itemGutter(
+      theme,
+      true
+    )}`
+  );
+
 const Bounds = styled(Swap)`
   width: 100%;
-  height: 60px;
+  height: ${height};
   justify-content: center;
+  top: ${yOffset};
+  left: ${xOffset};
 `;
 
 const swapTransition = (visible: boolean) => css`
