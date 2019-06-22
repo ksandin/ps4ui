@@ -24,7 +24,9 @@ export const Home = () => {
       <SystemMenuContent system={system} />
       <SystemMenu ref={systemMenuRef} items={systems} />
       <AppMenu ref={appMenuRef} items={apps} />
-      <AppMenuContent app={app} />
+      <AppMenuContent>
+        {app && app.component && React.createElement(app.component)}
+      </AppMenuContent>
       <Dock variant="topRight">
         <Clock />
       </Dock>
