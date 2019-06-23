@@ -1,23 +1,13 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { Typography } from '../components/Typography';
 import {
   ImageSide,
   RowWithStuffAndImage
 } from '../components/RowWithStuffAndImage';
-
-let counter = 0;
-
-const nextCounter = () => (counter += 1).toString();
-
-const imageUrl = (width = 300, height = 300, bust = nextCounter()) =>
-  `https://picsum.photos/${width}/${height}?_=${bust}`;
-
-const imageComponent = (width?: number, height?: number, bust?: string) =>
-  styled.img.attrs({ src: imageUrl(width, height, bust) })``;
+import { generateImageUrl } from './generateImageUrl';
 
 const dummyComponent = (title: string, imageSide?: ImageSide) => {
-  const url = imageUrl(800, 300, title);
+  const url = generateImageUrl(800, 300, title);
   return () => (
     <RowWithStuffAndImage imageUrl={url} imageSide={imageSide}>
       <Typography variant="h1">{title}</Typography>
@@ -28,67 +18,67 @@ const dummyComponent = (title: string, imageSide?: ImageSide) => {
 
 export const apps = [
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'BowlingBall',
     action: 'Bowl',
     component: dummyComponent('BowlingBall', 'left')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'BreadSlice',
     action: 'Yum',
     component: dummyComponent('BreadSlice', 'right')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'Broom',
     action: 'Clean',
     component: dummyComponent('Broom', 'left')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'CandyCane',
     action: 'Tasty',
     component: dummyComponent('CandyCane', 'right')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'Cat',
     action: 'Meow',
     component: dummyComponent('Cat', 'left')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'CheckCircle',
     action: 'Spin',
     component: dummyComponent('CheckCircle', 'right')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'Cloud',
     action: 'Floof',
     component: dummyComponent('Cloud', 'left')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'Coins',
     action: 'Cashing',
     component: dummyComponent('Coins', 'right')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'Comments',
     action: 'Talk',
     component: dummyComponent('Comments', 'left')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'CompactDisc',
     action: 'Spin',
     component: dummyComponent('CompactDisc', 'right')
   },
   {
-    icon: imageComponent(),
+    imageUrl: generateImageUrl(),
     name: 'Settings',
     action: 'Open',
     component: dummyComponent('Settings', 'left')
