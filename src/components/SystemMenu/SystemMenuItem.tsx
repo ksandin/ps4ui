@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { DefaultTheme } from 'styled-components/macro';
 import { useSpatial } from '../../lib/spatial/useSpatial';
-import { Content } from '../../state/Content';
+import { System } from '../../state/System';
 import { TypographyProps } from '../Typography';
 import { math } from 'polished';
 import { GlowingTypography } from '../GlowingTypography';
@@ -9,18 +9,14 @@ import { activationTransition } from '../../css/transitions';
 import { Row } from '../Row';
 import { Collapse } from '../Collapse';
 
-export type SystemMenuItemProps = React.HTMLAttributes<HTMLDivElement> &
-  Content & {
-    isVisible?: boolean;
-    isCollapsed?: boolean;
-  };
+export type SystemMenuItemProps = React.HTMLAttributes<HTMLDivElement> & {
+  system: System;
+  isVisible?: boolean;
+  isCollapsed?: boolean;
+};
 
 export const SystemMenuItem: React.FC<SystemMenuItemProps> = ({
-  icon: Icon,
-  imageUrl,
-  name,
-  component,
-  info: Info,
+  system: { name, icon: Icon, info: Info },
   isVisible = true,
   isCollapsed,
   ...props

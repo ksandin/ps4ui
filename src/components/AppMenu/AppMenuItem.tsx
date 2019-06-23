@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Square, SquareProps } from '../Square';
 import styled, { css, DefaultTheme } from 'styled-components/macro';
 import { useSpatial } from '../../lib/spatial/useSpatial';
-import { Content } from '../../state/Content';
+import { App } from '../../state/App';
 import { math, transparentize } from 'polished';
 import { activationTransition } from '../../css/transitions';
 import { Border } from '../Border';
@@ -10,15 +10,12 @@ import { Dock } from '../Dock';
 import { Typography } from '../Typography';
 import { SmartImage, SmartImageProps } from '../SmartImage';
 
-export type AppMenuItemProps = SquareProps & Content & { activate?: boolean };
+export type AppMenuItemProps = SquareProps & { app: App };
 
 const activeClass = 'active';
 
 export const AppMenuItem: React.FC<AppMenuItemProps> = ({
-  imageUrl,
-  name,
-  action,
-  activate,
+  app: { imageUrl, action },
   ...props
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);

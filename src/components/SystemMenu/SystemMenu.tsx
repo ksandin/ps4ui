@@ -1,19 +1,15 @@
 import * as React from 'react';
-import {
-  itemScale,
-  itemSize,
-  SystemMenuItem,
-  SystemMenuItemProps
-} from './SystemMenuItem';
+import { itemScale, itemSize, SystemMenuItem } from './SystemMenuItem';
 import { Row, RowProps } from '../Row';
 import styled, { css, DefaultTheme } from 'styled-components/macro';
 import { math } from 'polished';
 import { useSpatialIndex } from '../../lib/spatial/useSpatialIndex';
 import { useRefNormalizer } from '../../hooks/useRefNormalizer';
 import { activationTransition } from '../../css/transitions';
+import { System } from '../../state/System';
 
 export type SystemMenuProps = RowProps & {
-  items?: SystemMenuItemProps[];
+  items?: System[];
 };
 
 export const SystemMenu = React.forwardRef<HTMLDivElement, SystemMenuProps>(
@@ -22,8 +18,8 @@ export const SystemMenu = React.forwardRef<HTMLDivElement, SystemMenuProps>(
     const isActive = useSpatialIndex(ref) !== -1;
     return (
       <Container ref={ref} isActive={isActive} {...props}>
-        {items.map((itemProps, index) => (
-          <SystemMenuItem key={index} isCollapsed={isActive} {...itemProps} />
+        {items.map((system, index) => (
+          <SystemMenuItem key={index} isCollapsed={isActive} system={system} />
         ))}
       </Container>
     );

@@ -3,7 +3,7 @@ import { Row } from '../Row';
 import { createTransformer } from './createTransformer';
 import { useRefNormalizer } from '../../hooks/useRefNormalizer';
 import { AppMenuItem, itemGutter, itemHeight, itemWidth } from './AppMenuItem';
-import { Content } from '../../state/Content';
+import { App } from '../../state/App';
 import styled, { DefaultTheme, ThemeContext } from 'styled-components';
 import { activationTransition } from '../../css/transitions';
 import { math } from 'polished';
@@ -12,7 +12,7 @@ import { getOffsetForActiveItem } from './getOffsetForActiveItem';
 import { AppName } from './AppName';
 
 export type AppMenuProps = React.HTMLAttributes<HTMLDivElement> & {
-  items?: Content[];
+  items?: App[];
 };
 
 export const AppMenu = React.forwardRef<HTMLDivElement, AppMenuProps>(
@@ -24,8 +24,8 @@ export const AppMenu = React.forwardRef<HTMLDivElement, AppMenuProps>(
     return (
       <Container {...props}>
         <Slider ref={ref} transform={`translate(${offset})`}>
-          {items.map((itemProps, index) => (
-            <AppMenuItem key={index} activate={index === 0} {...itemProps} />
+          {items.map((app, index) => (
+            <AppMenuItem key={index} app={app} />
           ))}
         </Slider>
         <PositionedAppName>{activeItem && activeItem.name}</PositionedAppName>
