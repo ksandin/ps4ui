@@ -16,7 +16,6 @@ export const Home = () => {
 
   const appMenuRef = React.useRef(null);
   const appIndex = useSpatialIndex(appMenuRef);
-
   const app = apps[appIndex];
 
   return (

@@ -9,16 +9,18 @@ export type ImageSide = 'right' | 'left';
 export type RowWithStuffAndImageProps = RowProps & {
   imageUrl: string;
   imageSide?: ImageSide;
+  imageWidth?: number | string;
 };
 
 export const RowWithStuffAndImage: React.FC<RowWithStuffAndImageProps> = ({
   children,
   imageUrl,
   imageSide = 'right',
+  imageWidth,
   ...props
 }) => {
   const content = <Content>{children}</Content>;
-  const image = <Image src={imageUrl} />;
+  const image = <Image src={imageUrl} width={imageWidth} />;
   if (imageSide === 'left') {
     return (
       <Container {...props}>
@@ -44,8 +46,8 @@ const Content = styled.div`
   padding: ${props => math(`${props.theme.unit} * 5`)};
 `;
 
-const Image = styled(SmartImage)`
-  width: 60%;
+const Image = styled(SmartImage)<{ width?: number | string }>`
+  width: ${props => props.width || '60%'};
   background-size: cover;
   background-position: 50% 50%;
 `;
