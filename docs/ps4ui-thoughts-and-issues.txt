@@ -1,0 +1,12 @@
+How do we avoid inline styles when needing to style dynamic components?
+
+ie. 
+export const SystemMenuItem: React.FC<SystemMenuItemProps> = ({ icon: Icon, ...props }) => (
+  <Bounds {...props}>
+    <Icon style={{display: 'flex', flex: 1}}/>
+  </Bounds>
+);
+
+react-transition-group + spatial seems to have some issues:
+https://github.com/ksandin/ps4ui/commit/7e83e53442e68ab348117ceb0663fc205b648700
+note that navigating up and down between system menu and app menu seems to be broken
