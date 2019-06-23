@@ -6,6 +6,9 @@ export type Content = {
   icon?: React.ComponentType<
     React.HTMLAttributes<HTMLElement> | StyledIconProps
   >;
+  info?: React.ComponentType<
+    React.HTMLAttributes<HTMLElement> | StyledIconProps
+  >;
   component?: React.ComponentType<
     React.HTMLAttributes<HTMLElement> | StyledIconProps
   >;

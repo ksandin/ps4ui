@@ -1,37 +1,48 @@
 import * as React from 'react';
-import { SystemMenuItem, SystemMenuItemProps } from './SystemMenuItem';
-import { Row } from '../Row';
-import styled, { css } from 'styled-components/macro';
+import {
+  itemScale,
+  itemSize,
+  SystemMenuItem,
+  SystemMenuItemProps
+} from './SystemMenuItem';
+import { Row, RowProps } from '../Row';
+import styled, { css, DefaultTheme } from 'styled-components/macro';
 import { math } from 'polished';
 import { useSpatialIndex } from '../../lib/spatial/useSpatialIndex';
 import { useRefNormalizer } from '../../hooks/useRefNormalizer';
 import { activationTransition } from '../../css/transitions';
 
-export type SystemMenuProps = React.HTMLAttributes<HTMLDivElement> & {
+export type SystemMenuProps = RowProps & {
   items?: SystemMenuItemProps[];
 };
 
 export const SystemMenu = React.forwardRef<HTMLDivElement, SystemMenuProps>(
-  ({ items = [], ...props }, ref) => {
-    const isActive = useSpatialIndex(useRefNormalizer(ref)) !== -1;
+  ({ items = [], ...props }, legacyRef) => {
+    const ref = useRefNormalizer(legacyRef);
+    const isActive = useSpatialIndex(ref) !== -1;
     return (
-      <SystemMenuRow ref={ref} isActive={isActive} {...props}>
+      <Container ref={ref} isActive={isActive} {...props}>
         {items.map((itemProps, index) => (
-          <SystemMenuItem key={index} {...itemProps} />
+          <SystemMenuItem key={index} isCollapsed={isActive} {...itemProps} />
         ))}
-      </SystemMenuRow>
+      </Container>
     );
   }
 );
 
-const SystemMenuRow = styled(Row)<{ isActive: boolean }>(
-  activationTransition('padding-right'),
+const rowHeight = (theme: DefaultTheme) =>
+  math(`${itemSize(theme)} * ${itemScale(false)}`);
+
+const Container = styled(Row)<{ isActive: boolean }>(
+  activationTransition('margin-right', 'margin-left'),
   ({ isActive, theme }) => css`
+    height: ${rowHeight(theme)};
+    margin-bottom: ${math(`${theme.unit} * 12`)};
     justify-content: space-between;
-    padding-left: ${math(`${theme.unit} * ${isActive ? 9 : 0}`)};
-    padding-right: ${math(`${theme.unit} * ${isActive ? 9 : 21}`)};
-    & > * {
-      width: ${math(`${theme.unit} * 8`)};
-    }
+    align-items: center;
+    margin-top: ${props =>
+      math(`-${props.theme.unit}`)}; // HACK should be applied by Home.tsx
+    margin-left: ${math(`${theme.unit} * ${isActive ? 9 : 0}`)};
+    margin-right: ${math(`${theme.unit} * ${isActive ? 9 : 21}`)};
   `
 );
