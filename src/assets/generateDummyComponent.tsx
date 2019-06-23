@@ -29,3 +29,7 @@ export const generateDummyComponent2 = (
   );
   return () => <RowsWithStuffAndImages urls={urls} imageSide={imageSide} />;
 };
+
+export const generateInfoComponent = () => () => (
+  <Typography variant="h4">Lorem ipsum dolor sit amet.</Typography>
+);

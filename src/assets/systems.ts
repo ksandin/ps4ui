@@ -3,7 +3,10 @@ import { Amazon, Dice } from 'styled-icons/icomoon';
 import { Android } from 'styled-icons/material';
 import { Baidu } from 'styled-icons/boxicons-logos';
 import { CookieBite, Cube, Dog } from 'styled-icons/fa-solid';
-import { generateDummyComponent2 } from './generateDummyComponent';
+import {
+  generateDummyComponent2,
+  generateInfoComponent
+} from './generateDummyComponent';
 
 export const systems = [
   {
@@ -14,7 +17,8 @@ export const systems = [
   {
     icon: Amazon,
     name: 'Amazon',
-    component: generateDummyComponent2('Amazon', 'right')
+    component: generateDummyComponent2('Amazon', 'right'),
+    info: generateInfoComponent()
   },
   {
     icon: Android,
