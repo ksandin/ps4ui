@@ -65,4 +65,5 @@ typings/
 
 # Webpack
 dist
+build
 .awcache
