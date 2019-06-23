@@ -1,37 +1,21 @@
 import * as React from 'react';
 import { Dock, DockProps } from './Dock';
 import styled from 'styled-components/macro';
-import { Background, backgrounds } from './Background';
-import { useIndexCycle } from '../hooks/useIndexCycle';
-import { Typography } from './Typography';
-import { useArrayCycle } from '../hooks/useArrayCycle';
+import { background } from '../assets/background.glsl';
+const Shader = require('shadertoy-react').default;
 
 export type ScreenProps = DockProps;
 
 export const Screen: React.FC<ScreenProps> = ({ children, ...props }) => {
-  const { index: backgroundIndex, cycle: cycleBackground } = useIndexCycle(
-    backgrounds.length
-  );
-  const { item: opacity, cycle: cycleOpacity } = useArrayCycle(opacities);
   return (
     <Padding {...props}>
-      <Background index={backgroundIndex} />
-      <Dock variant="fill" style={{ opacity }}>
-        {children}
+      <Dock>
+        <Shader fs={background} />
       </Dock>
-      <Dock variant="bottomRight">
-        <Typography variant="h1" onClick={cycleBackground}>
-          Cycle background
-        </Typography>
-        <Typography variant="h1" onClick={cycleOpacity}>
-          Cycle opacity
-        </Typography>
-      </Dock>
+      <Dock variant="fill">{children}</Dock>
     </Padding>
   );
 };
-
-const opacities = [1, 0.5, 0.25, 0];
 
 const Padding = styled(Dock)`
   padding: 4.2% 5%;
