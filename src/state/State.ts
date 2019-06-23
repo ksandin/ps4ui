@@ -4,11 +4,13 @@ import { UIStore } from './UIStore';
 import { Spatial } from '../lib/spatial/Spatial';
 import { Content } from './Content';
 import { action, observable } from 'mobx';
+import { ImageCache } from '../lib/imageCache/ImageCache';
 
 export class State {
   ui = new UIStore();
   theme = createDefaultTheme();
   spatial = new Spatial();
+  images = new ImageCache();
   @observable systems: Content[] = [];
   @observable apps: Content[] = [];
 

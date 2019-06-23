@@ -16,7 +16,6 @@ export const Home = () => {
 
   const appMenuRef = React.useRef(null);
   const appIndex = useSpatialIndex(appMenuRef);
-
   const app = apps[appIndex];
 
   return (
@@ -24,7 +23,9 @@ export const Home = () => {
       <SystemMenuContent system={system} />
       <SystemMenu ref={systemMenuRef} items={systems} />
       <AppMenu ref={appMenuRef} items={apps} />
-      <AppMenuContent app={app} />
+      <AppMenuContent swapKey={app && app.name}>
+        {app && app.component && React.createElement(app.component)}
+      </AppMenuContent>
       <Dock variant="topRight">
         <Clock />
       </Dock>

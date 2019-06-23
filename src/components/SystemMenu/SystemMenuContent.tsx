@@ -4,21 +4,31 @@ import styled, { css, DefaultTheme } from 'styled-components';
 import { math } from 'polished';
 import { Typography } from '../Typography';
 import { activationTransition } from '../../css/transitions';
-import { Swap } from '../Swap/Swap';
+import { Swap, SwapProps } from '../Swap/Swap';
 
-export type SystemMenuContentProps = {
+const height = (theme: DefaultTheme) => math(`${theme.unit} * 82`);
+
+export type SystemMenuContentProps = SwapProps & {
   system?: Content;
 };
 
 export const SystemMenuContent: React.FC<SystemMenuContentProps> = ({
-  system
+  system,
+  ...props
 }) => (
-  <Container swapKey={system && system.name} isActive={!!system}>
-    {system && <Typography variant="h3">{system.name}</Typography>}
+  <Container swapKey={system && system.name} isActive={!!system} {...props}>
+    {system && (
+      <>
+        <Title>{system.name}</Title>
+        {system.component && React.createElement(system.component)}
+      </>
+    )}
   </Container>
 );
 
-const height = (theme: DefaultTheme) => math(`${theme.unit} * 82`);
+const Title = styled(Typography).attrs({ variant: 'h3' })`
+  margin-bottom: ${props => math(`${props.theme.unit} * 2`)};
+`;
 
 const Container = styled(Swap)<{ isActive: boolean }>(
   activationTransition('margin-top', 'opacity'),

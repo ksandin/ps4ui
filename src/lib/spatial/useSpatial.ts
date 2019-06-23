@@ -11,7 +11,7 @@ export function useSpatial(ref: React.RefObject<SpatialNode>) {
     [spatial, getNode]
   );
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     spatial.add(getNode());
     refreshActive();
     const unsubscribeFromChanges = spatial.subscribeToChanges(refreshActive);

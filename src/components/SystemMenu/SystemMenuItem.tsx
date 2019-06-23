@@ -19,7 +19,7 @@ export const SystemMenuItem: React.FC<SystemMenuItemProps> = ({
   const isActive = useSpatial(ref);
   return (
     <Container ref={ref} {...props} isActive={isActive}>
-      <Icon />
+      {Icon && <Icon />}
       <Text isActive={isActive}>{name}</Text>
     </Container>
   );

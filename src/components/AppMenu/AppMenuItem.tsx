@@ -3,18 +3,19 @@ import { Square, SquareProps } from '../Square';
 import styled, { css, DefaultTheme } from 'styled-components/macro';
 import { useSpatial } from '../../lib/spatial/useSpatial';
 import { Content } from '../../state/Content';
-import { math } from 'polished';
+import { math, transparentize } from 'polished';
 import { activationTransition } from '../../css/transitions';
 import { Border } from '../Border';
 import { Dock } from '../Dock';
 import { Typography } from '../Typography';
+import { SmartImage, SmartImageProps } from '../SmartImage';
 
 export type AppMenuItemProps = SquareProps & Content & { activate?: boolean };
 
 const activeClass = 'active';
 
 export const AppMenuItem: React.FC<AppMenuItemProps> = ({
-  icon: Icon,
+  imageUrl,
   name,
   action,
   activate,
@@ -30,7 +31,7 @@ export const AppMenuItem: React.FC<AppMenuItemProps> = ({
     >
       <Body isActive={isActive}>
         <Crop>
-          <Image as={Icon} />
+          {imageUrl && <ItemImage src={imageUrl} />}
           <Bottom>
             <Typography variant="h2">{action}</Typography>
           </Bottom>
@@ -60,9 +61,17 @@ const Bottom = styled.div`
   align-items: center;
 `;
 
-const Image = styled(Square)`
+const ItemImage = ({ src }: SmartImageProps) => (
+  <Square>
+    <WideImageWithBackground src={src} />
+  </Square>
+);
+
+const WideImageWithBackground = styled(SmartImage)`
   width: 100%;
-  background: ${props => props.theme.colors.background};
+  height: 100%;
+  background-color: ${props =>
+    transparentize(0.2, props.theme.colors.background)};
 `;
 
 const Container = styled.div(

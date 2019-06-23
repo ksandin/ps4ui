@@ -28,7 +28,7 @@ export const AppMenu = React.forwardRef<HTMLDivElement, AppMenuProps>(
             <AppMenuItem key={index} activate={index === 0} {...itemProps} />
           ))}
         </Slider>
-        <Footer>{activeItem && activeItem.name}</Footer>
+        <PositionedAppName>{activeItem && activeItem.name}</PositionedAppName>
       </Container>
     );
   }
@@ -37,26 +37,21 @@ export const AppMenu = React.forwardRef<HTMLDivElement, AppMenuProps>(
 const leftMargin = ({ theme }: { theme: DefaultTheme }) =>
   math(`${itemWidth(theme)} * 1`);
 
-const rowHeight = ({ theme }: { theme: DefaultTheme }) =>
-  itemHeight(theme, false);
-
-const footerOffsetY = ({ theme }: { theme: DefaultTheme }) =>
-  math(`-(${itemHeight(theme, true)} - ${rowHeight({ theme })})`);
-
-const footerOffsetX = ({ theme }: { theme: DefaultTheme }) =>
+const nameOffsetX = ({ theme }: { theme: DefaultTheme }) =>
   math(`${itemWidth(theme, true)} + ${itemGutter(theme, true)}`);
 
 const Container = styled.div`
   margin-left: ${leftMargin};
-  height: ${rowHeight};
+  height: ${props => itemHeight(props.theme, true)};
 `;
 
-const Slider = styled(createTransformer(Row))(
-  activationTransition('transform')
-);
+const Slider = styled(createTransformer(Row))`
+  ${activationTransition('transform')};
+  height: ${props => itemHeight(props.theme)};
+`;
 
-const Footer = styled(AppName)`
+const PositionedAppName = styled(AppName)`
   position: absolute;
-  bottom: ${footerOffsetY};
-  left: ${footerOffsetX};
+  bottom: 0;
+  left: ${nameOffsetX};
 `;

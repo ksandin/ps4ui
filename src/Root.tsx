@@ -7,6 +7,7 @@ import { Viewport } from './components/Viewport/Viewport';
 import { Home } from './components/Home';
 import { Reset } from './components/Reset';
 import { SpatialContext } from './lib/spatial/SpatialContext';
+import { ImageCacheContext } from './lib/imageCache/ImageCacheContext';
 
 export type AppProps = {
   state: State;
@@ -18,16 +19,18 @@ export type AppProps = {
  */
 export const Root = ({ state }: AppProps) =>
   useObserver(() => (
-    <ThemeProvider theme={state.theme}>
-      <SpatialContext.Provider value={state.spatial}>
-        <StateContext.Provider value={state}>
-          <Reset />
-          <Viewport>
-            <Screen>
-              <Home />
-            </Screen>
-          </Viewport>
-        </StateContext.Provider>
-      </SpatialContext.Provider>
-    </ThemeProvider>
+    <ImageCacheContext.Provider value={state.images}>
+      <ThemeProvider theme={state.theme}>
+        <SpatialContext.Provider value={state.spatial}>
+          <StateContext.Provider value={state}>
+            <Reset />
+            <Viewport>
+              <Screen>
+                <Home />
+              </Screen>
+            </Viewport>
+          </StateContext.Provider>
+        </SpatialContext.Provider>
+      </ThemeProvider>
+    </ImageCacheContext.Provider>
   ));
