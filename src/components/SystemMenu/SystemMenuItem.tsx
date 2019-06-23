@@ -18,10 +18,12 @@ export const SystemMenuItem: React.FC<SystemMenuItemProps> = ({
   const ref = React.useRef<HTMLDivElement>(null);
   const isActive = useSpatial(ref);
   return (
-    <Container ref={ref} {...props} isActive={isActive}>
-      {Icon && <Icon />}
-      <Text isActive={isActive}>{name}</Text>
-    </Container>
+    <div ref={ref} {...props}>
+      <Body isActive={isActive}>
+        {Icon && <Icon />}
+        <Text isActive={isActive}>{name}</Text>
+      </Body>
+    </div>
   );
 };
 
@@ -34,16 +36,17 @@ const Text = styled(GlowingTypography).attrs<TypographyProps>({
   margin-bottom: 0;
 `;
 
-const size = ({ unit }: DefaultTheme) => math(`${unit} * 12`);
-const Container = styled.div<{ isActive: boolean }>`
-  & {
-    ${activationTransition('transform')};
-    transform: translate(0, -32%) scale(${props => (props.isActive ? 1 : 0.5)});
-    align-items: center;
-  }
+export const itemSize = ({ unit }: DefaultTheme) => math(`${unit} * 12`);
+
+export const itemScale = (isActive: boolean) => (isActive ? 1 : 0.5);
+
+const Body = styled.div<{ isActive: boolean }>`
+  ${activationTransition('transform')};
+  position: absolute;
+  transform: translate(-50%, -50%) scale(${props => itemScale(props.isActive)});
   svg {
-    width: ${props => size(props.theme)};
-    height: ${props => size(props.theme)};
+    width: ${props => itemSize(props.theme)};
+    height: ${props => itemSize(props.theme)};
     color: ${props => props.theme.colors.white};
   }
 `;
