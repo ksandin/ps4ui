@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Row, RowProps } from './Row';
 import { math } from 'polished';
+import { SmartImage } from './SmartImage';
 
 export type ImageSide = 'right' | 'left';
 
@@ -17,7 +18,7 @@ export const RowWithStuffAndImage: React.FC<RowWithStuffAndImageProps> = ({
   ...props
 }) => {
   const content = <Content>{children}</Content>;
-  const image = <Image style={{ backgroundImage: `url(${imageUrl})` }} />;
+  const image = <Image src={imageUrl} />;
   if (imageSide === 'left') {
     return (
       <Container {...props}>
@@ -43,7 +44,7 @@ const Content = styled.div`
   padding: ${props => math(`${props.theme.unit} * 5`)};
 `;
 
-const Image = styled.div`
+const Image = styled(SmartImage)`
   width: 60%;
   background-size: cover;
   background-position: 50% 50%;
