@@ -19,7 +19,12 @@ export const SystemMenu = React.forwardRef<HTMLDivElement, SystemMenuProps>(
     return (
       <Container ref={ref} isActive={isActive} {...props}>
         {items.map((system, index) => (
-          <SystemMenuItem key={index} isCollapsed={isActive} system={system} />
+          <SystemMenuItem
+            key={index}
+            showInfo={!isActive}
+            isVisible={isActive || !system.hideWhenInactive}
+            system={system}
+          />
         ))}
       </Container>
     );

@@ -7,8 +7,9 @@ import {
   generateDummyComponent2,
   generateInfoComponent
 } from './generateDummyComponent';
+import { System } from '../state/System';
 
-export const systems = [
+export const systems: System[] = [
   {
     icon: Airbnb,
     name: 'Airbnb',
@@ -18,7 +19,7 @@ export const systems = [
     icon: Amazon,
     name: 'Amazon',
     component: generateDummyComponent2('Amazon', 'right'),
-    info: generateInfoComponent()
+    info: generateInfoComponent('Lorem ipsum dolor sit amet.')
   },
   {
     icon: Android,
@@ -28,7 +29,8 @@ export const systems = [
   {
     icon: Apple,
     name: 'Apple',
-    component: generateDummyComponent2('Apple', 'right')
+    component: generateDummyComponent2('Apple', 'right'),
+    hideWhenInactive: true
   },
   {
     icon: Angular,
@@ -38,17 +40,20 @@ export const systems = [
   {
     icon: Baidu,
     name: 'Baidu',
-    component: generateDummyComponent2('Baidu', 'right')
+    component: generateDummyComponent2('Baidu', 'right'),
+    hideWhenInactive: true
   },
   {
     icon: CookieBite,
     name: 'CookieBite',
-    component: generateDummyComponent2('CookieBite', 'left')
+    component: generateDummyComponent2('CookieBite', 'left'),
+    info: generateInfoComponent('Hello World')
   },
   {
     icon: Cube,
     name: 'Cube',
-    component: generateDummyComponent2('Cube', 'right')
+    component: generateDummyComponent2('Cube', 'right'),
+    hideWhenInactive: true
   },
   {
     icon: Dice,
@@ -58,6 +63,7 @@ export const systems = [
   {
     icon: Dog,
     name: 'Doggos',
-    component: generateDummyComponent2('Doggos', 'right')
+    component: generateDummyComponent2('Doggos', 'right'),
+    hideWhenInactive: true
   }
 ];
